@@ -1,747 +1,395 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <!-- Required meta tags-->
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Miguel Montiel · Software Engineer</title>
+  <meta name="description" content="Software Engineer III at Walmart Global Tech. I build mobile and web products end to end with React Native, Expo, Next.js and Supabase." />
+  <meta property="og:title" content="Miguel Montiel · Software Engineer" />
+  <meta property="og:description" content="Mobile and web products end to end: React Native, Expo, Next.js, Supabase and AI-assisted engineering." />
+  <meta property="og:image" content="https://miguelmontiel30.github.io/Portfolio/assets/rp-landing.jpg" />
+  <meta property="og:url" content="https://miguelmontiel30.github.io/Portfolio/" />
+  <meta name="theme-color" content="#0b0d13" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f7f8fa" media="(prefers-color-scheme: light)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f7f8fa; --surface: #ffffff; --surface-2: #eef1f6; --border: #e3e7ee;
+      --text: #10131a; --muted: #5b6475; --accent: #1a56db; --accent-soft: #e4ecfd;
+      --accent-text: #1748b8; --on-accent: #ffffff; --ok: #047857; --shadow: 0 1px 2px rgba(16,19,26,.05), 0 8px 24px rgba(16,19,26,.06);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0b0d13; --surface: #13161d; --surface-2: #1b1f28; --border: #262b36;
+        --text: #eef1f6; --muted: #9aa3b5; --accent: #6b9bff; --accent-soft: #18223a;
+        --accent-text: #9dbcff; --on-accent: #0b0d13; --ok: #34d399; --shadow: none;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0b0d13; --surface: #13161d; --surface-2: #1b1f28; --border: #262b36;
+      --text: #eef1f6; --muted: #9aa3b5; --accent: #6b9bff; --accent-soft: #18223a;
+      --accent-text: #9dbcff; --on-accent: #0b0d13; --ok: #34d399; --shadow: none;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 Inter, system-ui, -apple-system, sans-serif; }
+    a { color: var(--accent-text); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+    @media (min-width: 720px) { .wrap { padding: 0 32px; } }
 
-  <!-- Title-->
-  <title>Miguel's Personal Portfolio</title>
+    header { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+    .bar { display: flex; align-items: center; gap: 16px; height: 60px; }
+    .brand { font-weight: 700; color: var(--text); margin-right: auto; }
+    nav { display: none; gap: 20px; }
+    nav a { color: var(--muted); font-size: 15px; }
+    @media (min-width: 720px) { nav { display: flex; } }
+    .toggle { border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 999px; height: 34px; min-width: 44px; padding: 0 12px; font: 600 13px Inter, sans-serif; cursor: pointer; }
+    .toggle:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-  <!-- Description-->
-  <meta name="description" content="Personal Portfolio">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    .hero { padding-top: 72px; padding-bottom: 48px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--accent-text); background: var(--accent-soft); padding: 6px 12px; border-radius: 999px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); }
+    h1 { font-size: clamp(36px, 7vw, 60px); line-height: 1.05; letter-spacing: -0.03em; margin: 20px 0 16px; }
+    .lead { font-size: clamp(17px, 2.2vw, 20px); color: var(--muted); max-width: 680px; margin: 0; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn { display: inline-flex; align-items: center; height: 46px; padding: 0 20px; border-radius: 12px; font-weight: 600; border: 1px solid var(--border); color: var(--text); background: var(--surface); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+    .btn:hover { text-decoration: none; filter: brightness(1.05); }
+    .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 44px; }
+    @media (min-width: 720px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+    .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; box-shadow: var(--shadow); }
+    .stat b { display: block; font-size: 26px; letter-spacing: -0.02em; }
+    .stat span { color: var(--muted); font-size: 14px; }
 
-  <!-- Favicons-->
-  <link rel="apple-touch-icon" sizes="180x180" href="img/logo_2.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/logo_2.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="img/logo_2.png">
+    section { padding: 56px 0; }
+    h2 { font-size: clamp(26px, 4vw, 34px); letter-spacing: -0.02em; margin: 0 0 8px; }
+    .sub { color: var(--muted); margin: 0 0 28px; max-width: 680px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 24px; box-shadow: var(--shadow); }
+    .feature { display: grid; gap: 24px; margin-bottom: 20px; }
+    @media (min-width: 880px) { .feature { grid-template-columns: 1.1fr 1fr; align-items: center; } }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
+    .tag-row li { font-size: 13px; color: var(--muted); background: var(--surface-2); border-radius: 8px; padding: 4px 10px; }
+    .kicker { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+    h3 { font-size: 22px; margin: 6px 0 10px; letter-spacing: -0.01em; }
+    ul.points { margin: 12px 0 0; padding-left: 20px; color: var(--muted); }
+    ul.points li { margin: 4px 0; }
+    .links { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 18px; font-weight: 600; }
+    .private { font-size: 13px; color: var(--muted); }
+    .phones { display: flex; gap: 14px; justify-content: center; }
+    .phones img { width: 46%; max-width: 230px; border-radius: 22px; border: 1px solid var(--border); }
+    .shot { border-radius: 14px; border: 1px solid var(--border); margin-top: 20px; }
+    .grid { display: grid; gap: 16px; }
+    @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+    .grid .card { padding: 20px; display: flex; flex-direction: column; }
+    .grid h3 { font-size: 18px; }
+    .grid p { color: var(--muted); margin: 0; flex: 1; }
+    .foundra-pieces { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .piece { background: var(--surface-2); border-radius: 12px; padding: 12px; font-size: 14px; }
+    .piece b { display: block; font-size: 14px; }
+    .piece span { color: var(--muted); }
 
-  <!-- Web fonts-->
-  <link
-    href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i&amp;display=swap"
-    rel="stylesheet">
+    .timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--border); }
+    .timeline li { position: relative; padding: 0 0 26px 24px; }
+    .timeline li::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+    .timeline .role { font-weight: 600; }
+    .timeline .meta { color: var(--muted); font-size: 14px; }
+    .roles { margin: 6px 0 0; padding: 0; list-style: none; }
+    .roles li { padding: 2px 0; }
+    .roles li::before { display: none; }
+    .two { display: grid; gap: 32px; }
+    @media (min-width: 880px) { .two { grid-template-columns: 1.3fr 1fr; } }
+    .skills { display: grid; gap: 14px; }
+    .skills h4 { margin: 0 0 6px; font-size: 14px; color: var(--muted); font-weight: 600; }
 
-  <!-- CSS vendors-->
-  <link rel="stylesheet" href="css/bootstrap-custom.css">
-  <link rel="stylesheet" href="css/ionicons.min.css">
-  <link rel="stylesheet" href="css/tiny-slider.css">
-  <link rel="stylesheet" href="css/lity.min.css">
-  <link rel="stylesheet" href="css/simplebar.min.css">
-  <link rel="stylesheet" href="css/jquery.mb.YTPlayer.min.css">
-
-  <!-- Main CSS-->
-  <link rel="stylesheet" href="css/main.css">
-
-  <!-- CSS Color scheme-->
-  <link id="color-scheme" rel="stylesheet" href="css/colors/main-moodyblue.css">
-
-  <link rel="stylesheet" href="css/custom.css">
+    .contact { text-align: center; }
+    .contact .actions { justify-content: center; }
+    footer { border-top: 1px solid var(--border); padding: 24px 0 40px; color: var(--muted); font-size: 14px; }
+  </style>
 </head>
-
-<body class="theme-dark">
-
-  <!-- Preloader-->
-  <div class="preloader">
-    <div class="preloader-block">
-      <div class="preloader-icon"><span class="loading-dot loading-dot-1"></span><span
-          class="loading-dot loading-dot-2"></span><span class="loading-dot loading-dot-3"></span></div>
+<body>
+  <header>
+    <div class="wrap bar">
+      <a class="brand" href="#top">Miguel Montiel</a>
+      <nav>
+        <a href="#work" data-i18n="nav.work">Work</a>
+        <a href="#experience" data-i18n="nav.experience">Experience</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+      <button class="toggle" id="lang" type="button" aria-label="Ver en español">ES</button>
+      <button class="toggle" id="theme" type="button" aria-label="Toggle dark mode">◐</button>
     </div>
-  </div>
+  </header>
 
-  <div id="overlay-effect"></div>
-
-  <!-- Navbar-->
-  <nav class="navbar-expand-md navbar fixed-top" id="navbar">
-
-    <a class="navbar-brand" data-scroll="" href="#home-area">
-      <!-- Navbar Logo-->
-      <!-- <img class="img-fluid" src="img/img-kitzu-logo.png" alt="Logo"> -->
-      <img class="img-fluid" width="70" height="70" src="img/logo_large.png" alt="Logo">
-    </a>
-
-    <span class="navbar-menu ml-auto" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" role="button">
-      <span class="btn-line"></span>
-    </span>
-
-    <div class="collapse navbar-collapse order-1 order-lg-0" id="navbarSupportedContent">
-
-      <!-- Navbar menu-->
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
-        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        <!-- <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li> -->
-      </ul>
-
-    </div>
-
-  </nav>
-
-  <!-- Home-->
-  <section class="home-area element-cover-bg" id="home" style="background-image:url(img/bg_3.jpg)">
-    <!-- <section class="home-area element-cover-bg" id="home" style="background-image:url(img/home.jpg)"> -->
-
-    <div class="container h-100">
-
-      <div class="row h-100 align-items-center justify-content-center">
-
-        <div class="col-12 col-lg-8 home-content text-center">
-
-          <h1 class="home-name">
-            Miguel Angel Montiel
-            <br>
-            <img src="./img/logo_small_2.png" alt="Logo Small" width="80" height="80">
-          </h1>
-
-          <!-- <h4 class="cd-headline clip home-headline">Nuestra infraestructura publicitaria se integra por -->
-          <h4 class="cd-headline clip home-headline">I'm a
-            <span class="cd-words-wrapper single-headline">
-              <b class="is-visible">Web Developer</b>
-              <b>Full-stack Web Developer</b>
-              <b>Web Designer</b>
-              <b>Proactive person</b>
-            </span>
-          </h4>
-
-        </div>
-
+  <main id="top">
+    <div class="wrap hero">
+      <span class="eyebrow"><span class="dot"></span><span data-i18n="hero.eyebrow">Software Engineer III · Walmart Global Tech</span></span>
+      <h1 data-i18n="hero.title">I build mobile and web products, end to end.</h1>
+      <p class="lead" data-i18n="hero.lead">From the database and its security rules to the app in people's hands. React Native, Expo, Next.js and Supabase, shipped to the web, iOS and Android from one codebase, plus the framework and AI tooling that make that fast and repeatable.</p>
+      <div class="actions">
+        <a class="btn primary" href="#work" data-i18n="hero.cta1">See my work</a>
+        <a class="btn" href="https://residencial-pro.expo.app/demo" target="_blank" rel="noopener" data-i18n="hero.cta2">Try a live demo</a>
       </div>
-
-    </div>
-
-    <div class="fixed-wrapper">
-
-      <!-- Languages list-->
-      <!-- <div class="fixed-block block-left">
-        <ul class="list-unstyled languages-list">
-          <li><a href="#0"><span class="single-language">ENG</span></a></li>
-          <li><a href="#0"><span class="single-language">JAP</span></a></li>
-        </ul>
-      </div> -->
-
-      <!-- Social media icons-->
-      <div class="fixed-block block-right">
-        <ul class="list-unstyled social-icons">
-          <!-- <li><a href="#0"><i class="icon ion-logo-twitter"></i></a></li> -->
-          <li><a href="https://www.linkedin.com/in/miguel-montiel30/"><i class="icon ion-logo-linkedin"></i></a></li>
-          <li><a href="https://github.com/miguelmontiel30"><i class="icon ion-logo-github"></i></a></li>
-          <!-- <li><a href="#0"><i class="icon ion-logo-instagram"></i></a></li> -->
-          <!-- <li><a href="#0"><i class="icon ion-logo-facebook"></i></a></li> -->
-        </ul>
+      <div class="stats">
+        <div class="stat"><b>5 <span data-i18n="stats.years.unit">years</span></b><span data-i18n="stats.years">at Walmart Global Tech</span></div>
+        <div class="stat"><b>3</b><span data-i18n="stats.platforms">platforms from one codebase</span></div>
+        <div class="stat"><b>13</b><span data-i18n="stats.packages">packages in my own framework</span></div>
+        <div class="stat"><b>7</b><span data-i18n="stats.products">products built since 2025</span></div>
       </div>
     </div>
-  </section>
 
-  <!-- About lightbox-->
-  <div class="lightbox-wrapper" id="about" data-simplebar>
+    <section id="work">
+      <div class="wrap">
+        <h2 data-i18n="work.title">Featured work</h2>
+        <p class="sub" data-i18n="work.sub">Products I designed, built and run myself, from the first migration to the release pipeline.</p>
 
-    <!-- CONTENEDOR DE LA VISTA -->
-    <div class="container">
-
-      <!-- BOTON PARA CERRAR LA INTERFAZ -->
-      <div class="lightbox-close">
-        <div class="close-btn" data-modal-close=""><span class="btn-line"></span></div>
-      </div>
-      <!-- BOTON PARA CERRAR LA INTERFAZ -->
-
-      <!-- CONTENIDO DE LA VISTA -->
-      <div class="row">
-
-        <div class="col-12">
-
-          <div class="lightbox-content">
-
-            <!-- TITULOS DE LA VISTA -->
-            <div class="row">
-
-              <div class="col-12">
-                <div class="section-heading page-heading">
-                  <p class="section-description">Get to know me</p>
-                  <h2 class="section-title">About Me</h2>
-                  <div class="animated-bar"></div>
-                </div>
-              </div>
-
+        <article class="card feature">
+          <div>
+            <span class="kicker" data-i18n="rp.kicker">Product · In production</span>
+            <h3>Residencial Pro</h3>
+            <p data-i18n="rp.desc">An app to run gated communities in Mexico: monthly fees with receipts, transparent expenses, visitor passes with QR, a guard booth with step-by-step guides, community announcements, polls, chats and push notifications. Today it runs a real community in Tulancingo, Hidalgo.</p>
+            <ul class="points">
+              <li data-i18n="rp.p1">Web/PWA, iOS and Android from one Expo codebase, with OTA updates and automatic releases.</li>
+              <li data-i18n="rp.p2">Multi-tenant Supabase with row-level security per role: residents, committee, guards and admins.</li>
+              <li data-i18n="rp.p3">Admin panel and public website in Next.js sharing the same database.</li>
+            </ul>
+            <ul class="tag-row"><li>Expo</li><li>React Native</li><li>Supabase</li><li>Postgres · RLS</li><li>TanStack Query</li><li>Next.js</li><li>Web Push</li><li>Sentry</li></ul>
+            <div class="links">
+              <a href="https://residencial-pro.expo.app/demo" target="_blank" rel="noopener" data-i18n="rp.demo">Try the demo →</a>
+              <a href="https://residencial-pro-admin.vercel.app" target="_blank" rel="noopener" data-i18n="rp.site">Website →</a>
             </div>
-            <!-- TITULOS DE LA VISTA -->
-
-            <!-- SECCION DE INFORMACIÓN -->
-            <div class="info-section single-section">
-
-              <div class="row align-items-center">
-
-                <!-- Picture part-->
-                <div class="col-12 col-lg-5 info-img">
-                  <!-- <img class="img-fluid img-thumbnail" src="img/info-img.jpg" alt="About Picture"> -->
-                  <img class="img-fluid img-thumbnail" src="img/about_3.jpg" alt="About Me Picture">
-                </div>
-
-                <!-- Content part-->
-                <div class="col-12 col-lg-7 info-content">
-
-                  <div class="content-block">
-
-                    <h2 class="content-subtitle">Who am I?</h2>
-
-                    <h6 class="content-title">
-                      I'm a Full-stack web Developer & I build apps that solve problems
-                    </h6>
-
-                    <div class="content-description">
-                      <p class="text-justify">
-                        IT Engineer, competitive, focused and self-taught committed to continuous learning. I dedicate
-                        myself to projecting my creativity through technology and web development creating projects that
-                        become very useful.
-                        I hope with the years of practice I will become a great professional and I'll contribute to
-                        scalable projects that generate value to society.
-                      </p>
-                    </div>
-
-                    <address class="content-info">
-
-                      <div class="row">
-                        <div class="col-12 col-md-6 single-info"><span>Name:</span>
-                          <p>Miguel Angel Montiel</p>
-                        </div>
-                        <div class="col-12 col-md-6 single-info"><span>Email:</span>
-                          <p>
-                            <a href="mailto:migueel.angelom@gmail.com">migueel.angelom@gmail.com</a>
-                          </p>
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-12 col-md-6 single-info"><span>Age:</span>
-                          <p>23</p>
-                        </div>
-                        <div class="col-12 col-md-6 single-info"><span>From:</span>
-                          <p>Mexico</p>
-                        </div>
-                      </div>
-
-                    </address>
-
-                    <!-- SOCIAL MEDIA -->
-                    <div class="d-block d-sm-flex align-items-center">
-                      <a class="btn content-download button-main button-scheme"
-                        href="./Resume Miguel Angel Ortega Montiel.pdf" 
-                        download="./Resume Miguel Angel Ortega Montiel.pdf"
-                        role="button">Download CV
-                      </a>
-                      <ul class="list-unstyled list-inline content-follow">
-                        <!-- <li class="list-inline-item"><a href="#0"><i class="icon ion-logo-twitter"></i></a></li> -->
-                        <li class="list-inline-item"><a href="https://www.linkedin.com/in/miguel-montiel30/"><i
-                              class="icon ion-logo-linkedin"></i></a></li>
-                        <li class="list-inline-item"><a href="https://github.com/miguelmontiel30"><i
-                              class="icon ion-logo-github"></i></a></li>
-                        <!-- <li class="list-inline-item"><a href="#0"><i class="icon ion-logo-facebook"></i></a></li> -->
-                        <!-- <li class="list-inline-item"><a href="#0"><i class="icon ion-logo-instagram"></i></a></li> -->
-                      </ul>
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-            <!-- SECCION DE INFORMACIÓN -->
-
-            <!-- SECCION DE TESTIMONIOS -->
-            <div class="testimonials-section single-section">
-
-              <div class="my-slider">
-
-              </div>
-            </div>
-            <!-- SECCION DE TESTIMONIOS -->
-
           </div>
+          <div class="phones">
+            <img src="assets/rp-resident.jpg" width="528" height="900" loading="lazy" alt="Residencial Pro, resident home: visitor pass, service request and open gate" data-i18n-alt="rp.alt1" />
+            <img src="assets/rp-committee.jpg" width="528" height="900" loading="lazy" alt="Residencial Pro, committee home: neighbor registration progress and pending reviews" data-i18n-alt="rp.alt2" />
+          </div>
+        </article>
+
+        <article class="card feature">
+          <div>
+            <span class="kicker" data-i18n="fd.kicker">Framework · Private</span>
+            <h3>Foundra</h3>
+            <p data-i18n="fd.desc">My framework for building Expo + Supabase apps. Every app shares the same rules, components, theme and way of tracking work, and a change in one package reaches all of them with a version bump.</p>
+            <ul class="points">
+              <li data-i18n="fd.p1">Rules and a Claude Code plugin so AI agents follow the same architecture, commit, test and verify the same way.</li>
+              <li data-i18n="fd.p2">A data layer decoupled from the backend: screens never touch Supabase directly.</li>
+              <li data-i18n="fd.p3">A Hub that records every session, pending task and decision across projects.</li>
+            </ul>
+            <ul class="tag-row"><li>TypeScript</li><li>Monorepo</li><li>Changesets</li><li>GitHub Packages</li><li>Claude Code</li><li>Vitest</li></ul>
+          </div>
+          <div class="foundra-pieces">
+            <div class="piece"><b>cli</b><span data-i18n="fd.cli">Doctor, migrations, releases and Hub log</span></div>
+            <div class="piece"><b>ui · tokens · icons</b><span data-i18n="fd.ui">Components and themes from one brand file</span></div>
+            <div class="piece"><b>data · data-supabase</b><span data-i18n="fd.data">Contracts, adapters and typed errors</span></div>
+            <div class="piece"><b>core · platform</b><span data-i18n="fd.core">Dates, errors and one API for web and native</span></div>
+            <div class="piece"><b>rules · plugin</b><span data-i18n="fd.rules">10 skills for AI agents: start, commit, PR, verify…</span></div>
+            <div class="piece"><b>create-app · hub</b><span data-i18n="fd.hub">New apps in one command; tracking for all of them</span></div>
+          </div>
+        </article>
+
+        <img class="shot" src="assets/rp-landing.jpg" width="1400" height="875" loading="lazy" alt="Residencial Pro public website" data-i18n-alt="rp.alt3" />
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 data-i18n="more.title">More projects</h2>
+        <p class="sub" data-i18n="more.sub">Most are private repositories; the links go to public demos.</p>
+        <div class="grid">
+          <article class="card">
+            <span class="kicker">Expo · Supabase · AI</span>
+            <h3>Wallet AI</h3>
+            <p data-i18n="wa.desc">Personal finance: expenses, budgets, accounts, debts, subscriptions and vehicles. AI classifies expenses, reads receipts and odometers, and evaluates installment purchases.</p>
+          </article>
+          <article class="card">
+            <span class="kicker">Expo · Supabase · Claude API</span>
+            <h3>Rivus</h3>
+            <p data-i18n="rv.desc">Empty your mind into ideas: quick capture in GTD style, AI sorting of the inbox, projects with nested tasks and a Pomodoro timer to act on them.</p>
+          </article>
+          <article class="card">
+            <span class="kicker">Next.js · Supabase</span>
+            <h3>Reta</h3>
+            <p data-i18n="rt.desc">Amateur football tournaments: venues with a weekly availability grid, match setup, live refereeing with timer and breaks, and roles for organizers.</p>
+            <div class="links"><a href="https://reta-web-app-web.vercel.app" target="_blank" rel="noopener" data-i18n="link.live">Live →</a></div>
+          </article>
+          <article class="card">
+            <span class="kicker">Expo · Foundra</span>
+            <h3>Tourly</h3>
+            <p data-i18n="to.desc">A travel app started from Foundra's template: web, iOS and Android with login, profiles and the shared component library from day one.</p>
+          </article>
+          <article class="card">
+            <span class="kicker">Next.js · Supabase · RLS</span>
+            <h3>EduSync</h3>
+            <p data-i18n="es.desc">School management for students, teachers, staff and parents: academic, financial and organizational records in one place.</p>
+            <div class="links">
+              <a href="https://edusync-dev.vercel.app" target="_blank" rel="noopener" data-i18n="link.live">Live →</a>
+              <a href="https://github.com/miguelmontiel30/edu-sync" target="_blank" rel="noopener" data-i18n="link.code">Code →</a>
+            </div>
+          </article>
+          <article class="card">
+            <span class="kicker" data-i18n="early.kicker">Earlier work · 2018–2021</span>
+            <h3>SALT · FoodPedidos</h3>
+            <p data-i18n="early.desc">Fleet and logistics administration for a transport company, and a food ordering system with web and mobile apps.</p>
+            <div class="links"><a href="https://github.com/miguelmontiel30?tab=repositories" target="_blank" rel="noopener" data-i18n="link.repos">Repositories →</a></div>
+          </article>
         </div>
-
       </div>
-      <!-- CONTENIDO DE LA VISTA -->
+    </section>
 
-    </div>
-    <!-- CONTENEDOR DE LA VISTA -->
-
-  </div>
-
-  <!-- Resume lightbox-->
-  <div class="lightbox-wrapper" id="resume" data-simplebar>
-    <div class="container">
-      <div class="lightbox-close">
-        <div class="close-btn" data-modal-close=""><span class="btn-line"></span></div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="lightbox-content">
-
-            <!-- TITLES SECTION -->
-            <div class="row">
-              <div class="col-12">
-                <div class="section-heading page-heading">
-                  <p class="section-description">Check out my Resume</p>
-                  <h2 class="section-title">Resume</h2>
-                  <div class="animated-bar"></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Resume section-->
-            <div class="resume-section single-section">
-              <div class="row">
-
-                <!-- Experience part-->
-                <div class="col-12 col-md-6">
-
-                  <div class="col-block experience">
-
-                    <h3 class="col-title">Experience</h3>
-
-                    <div class="resume-item">
-                      <span class="item-arrow"></span>
-                      <h5 class="item-title">Web Developer</h5>
-                      <span class="item-details">Xiimbal | 2019 -2020</span>
-                      <p class="item-description">
-                        IN THE DEVELOPMENT AREA, making web applications based in javascript and php. also PERFORMING
-                        TASKS of web design, as well as new implementations to clients software.
-                      </p>
-                    </div>
-
-                    <div class="resume-item">
-                      <span class="item-arrow"></span>
-                      <h5 class="item-title">Stay Agreement</h5>
-                      <span class="item-details">Proemier | 2018</span>
-                      <p class="item-description">
-                        Assigned to projects area, carried out for 4 months. Performing maintenance tasks, publicity
-                        support in social media, and leader in project 'SALT' for vehicles administration in the
-                        company.
-                        <br>
-                        <a href="https://github.com/miguelmontiel30/SALT">
-                          GitHub Link
-                        </a>
-                      </p>
-                    </div>
-
-                    <div class="resume-item"><span class="item-arrow"></span>
-                      <h5 class="item-title">Social Service.</h5>
-                      <span class="item-details">CBTIS #179 | 2015 - 2016</span>
-                      <p class="item-description">
-                        performed for 480 hours, performing maintenance tasks, inventories and support material for the
-                        classes.
-                      </p>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <!-- Education part-->
-                <div class="col-12 col-md-6">
-                  <div class="col-block education">
-                    <h3 class="col-title">Education</h3>
-
-                    <div class="resume-item">
-                      <span class="item-arrow"></span>
-                      <h5 class="item-title">Bachelor’s degree on IT</h5>
-                      <span class="item-details">Techonological University of Tulancingo | 2018 - 2020</span>
-                    </div>
-
-                    <div class="resume-item"><span class="item-arrow"></span>
-                      <h5 class="item-title">TSU on IT</h5>
-                      <span class="item-details">Techonological University of Tulancingo | 2016 - 2018</span>
-                    </div>
-
-                    <div class="resume-item"><span class="item-arrow"></span>
-                      <h5 class="item-title">Programming Tecnician</h5>
-                      <span class="item-details">CBTIS #179 (High School) | 2013 - 2016</span>
-                    </div>
-
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            <!-- Skills section-->
-            <div class="skills-section single-section">
-              <div class="row">
-                <div class="col-12">
-                  <div class="section-heading">
-                    <p class="section-description">My level of knowledge in some tools</p>
-                    <h2 class="section-title">My Skills</h2>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-
-                <!-- SKILLS COLUMN -->
-                <div class="col-12 col-md-6">
-
-                  <div class="single-skill" data-percentage="98">
-                    <div class="skill-info">
-                      <span class="skill-name">HTML/CSS3</span>
-                      <span class="skill-percentage" style="margin-right: 19.35px;">98%</span>
-                    </div>
-                    <div class="progress skill-progress">
-                      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-                        aria-valuenow="98" style="width: 98%;"></div>
-                    </div>
-                  </div>
-
-                  <div class="single-skill" data-percentage="98">
-                    <div class="skill-info">
-                      <span class="skill-name">Bootstrap</span>
-                      <span class="skill-percentage" style="margin-right: 19.35px;">98%</span>
-                    </div>
-                    <div class="progress skill-progress">
-                      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-                        aria-valuenow="98" style="width: 98%;"></div>
-                    </div>
-                  </div>
-
-                  <div class="single-skill" data-percentage="80">
-                    <div class="skill-info">
-                      <span class="skill-name">Web Design & Prototyping</span>
-                      <span class="skill-percentage" style="margin-right: 19.35px;">80%</span>
-                    </div>
-                    <div class="progress skill-progress">
-                      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-                        aria-valuenow="80" style="width: 80%;"></div>
-                    </div>
-                  </div>
-
-                  <div class="single-skill" data-percentage="85">
-                    <div class="skill-info">
-                      <span class="skill-name">JavaScript</span>
-                      <span class="skill-percentage" style="margin-right: 19.35px;">85%</span>
-                    </div>
-                    <div class="progress skill-progress">
-                      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-                        aria-valuenow="85" style="width: 85%;"></div>
-                    </div>
-                  </div>
-
-                </div>
-
-                <!-- SKILLS COLUMN -->
-                <div class="col-12 col-md-6">
-
-                  <div class="single-skill" data-percentage="70">
-                    <div class="skill-info">
-                      <span class="skill-name">React JS</span>
-                      <span class="skill-percentage" style="margin-right: 19.35px;">70%</span>
-                    </div>
-                    <div class="progress skill-progress">
-                      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-                        aria-valuenow="70" style="width: 70%;"></div>
-                    </div>
-                  </div>
-
-                  <div class="single-skill" data-percentage="75">
-                    <div class="skill-info">
-                      <span class="skill-name">WordPress</span>
-                      <span class="skill-percentage" style="margin-right: 19.35px;">75%</span>
-                    </div>
-                    <div class="progress skill-progress">
-                      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-                        aria-valuenow="75" style="width: 75%;"></div>
-                    </div>
-                  </div>
-
-                  <div class="single-skill" data-percentage="90">
-                    <div class="skill-info">
-                      <span class="skill-name">PHP</span>
-                      <span class="skill-percentage" style="margin-right: 19.35px;">90%</span>
-                    </div>
-                    <div class="progress skill-progress">
-                      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-                        aria-valuenow="90" style="width: 90%;"></div>
-                    </div>
-                  </div>
-
-                  <div class="single-skill" data-percentage="90">
-                    <div class="skill-info">
-                      <span class="skill-name">SQL Language (MySQL, PostgreeSQL, FireBase)</span>
-                      <span class="skill-percentage" style="margin-right: 19.35px;">90%</span>
-                    </div>
-                    <div class="progress skill-progress">
-                      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-                        aria-valuenow="90" style="width: 90%;"></div>
-                    </div>
-                  </div>
-
-                </div>
-
-              </div>
-            </div>
-
+    <section id="experience">
+      <div class="wrap two">
+        <div>
+          <h2 data-i18n="exp.title">Experience</h2>
+          <p class="sub" data-i18n="exp.sub">Eight years shipping software, five of them at Walmart Global Tech.</p>
+          <ul class="timeline">
+            <li>
+              <div class="role">Walmart Global Tech</div>
+              <div class="meta" data-i18n="exp.wm.meta">Mexico · Hybrid · Dec 2021 – present</div>
+              <ul class="roles">
+                <li>Software Engineer III <span class="meta" data-i18n="exp.wm.3">· Apr 2026 – present</span></li>
+                <li>Software Engineer II <span class="meta" data-i18n="exp.wm.2">· Dec 2023 – Apr 2026</span></li>
+                <li>Software Engineer <span class="meta" data-i18n="exp.wm.1">· Dec 2021 – Nov 2023</span></li>
+              </ul>
+            </li>
+            <li>
+              <div class="role" data-i18n="exp.xi.role">Full-stack Developer · Xiimbal</div>
+              <div class="meta" data-i18n="exp.xi.meta">Tulancingo, Hidalgo · Jan 2019 – Dec 2021</div>
+            </li>
+            <li>
+              <div class="role" data-i18n="exp.pr.role">Lead Web Developer (internship) · PROEMIER</div>
+              <div class="meta" data-i18n="exp.pr.meta">Tulancingo, Hidalgo · May – Aug 2018 · Web apps for logistics management</div>
+            </li>
+          </ul>
+          <h2 style="margin-top:28px" data-i18n="edu.title">Education</h2>
+          <p class="sub" style="margin:0"><b data-i18n="edu.degree">B.Eng. in Information Technology and Communication</b><br /><span data-i18n="edu.school">Universidad Tecnológica de Tulancingo · 2016 – 2020</span></p>
+        </div>
+        <div>
+          <h2 data-i18n="skills.title">Stack</h2>
+          <div class="skills card">
+            <div><h4 data-i18n="skills.mobile">Mobile and web</h4><ul class="tag-row" style="margin:0"><li>React</li><li>React Native</li><li>Expo</li><li>Next.js</li><li>TypeScript</li><li>PWA</li></ul></div>
+            <div><h4 data-i18n="skills.backend">Backend and data</h4><ul class="tag-row" style="margin:0"><li>Supabase</li><li>PostgreSQL</li><li>Row-level security</li><li>Edge Functions</li><li>Node.js</li><li>GraphQL</li></ul></div>
+            <div><h4 data-i18n="skills.state">State and quality</h4><ul class="tag-row" style="margin:0"><li>TanStack Query</li><li>Zustand</li><li>Zod</li><li>Vitest</li><li>ESLint</li><li>Sentry</li></ul></div>
+            <div><h4 data-i18n="skills.ship">Shipping</h4><ul class="tag-row" style="margin:0"><li>EAS Build · Update · Hosting</li><li>GitHub Actions</li><li>Vercel</li><li>Docker</li></ul></div>
+            <div><h4 data-i18n="skills.ai">AI</h4><ul class="tag-row" style="margin:0"><li>Claude API</li><li>Claude Code</li><li data-i18n="skills.agents">Agent rules and skills</li></ul></div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- Portfolio lightbox-->
-  <div class="lightbox-wrapper" id="portfolio" data-simplebar>
-
-    <div class="container">
-
-      <div class="lightbox-close">
-        <div class="close-btn" data-modal-close=""><span class="btn-line"></span></div>
-      </div>
-
-      <div class="row">
-        <div class="col-12">
-          <div class="lightbox-content">
-
-            <div class="row">
-              <div class="col-12">
-                <div class="section-heading page-heading">
-                  <p class="section-description">Showcasing some of my best work</p>
-                  <h2 class="section-title">Portfolio</h2>
-                  <div class="animated-bar"></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Portfolio section-->
-            <div class="portfolio-section single-section">
-
-              <div class="row">
-
-                <!-- Filter nav-->
-                <div class="col-12">
-                  <ul class="list-inline filter-control" role="group" aria-label="Filter Control">
-                    <li class="list-inline-item tab-active" data-filter="*">All</li>
-                    <li class="list-inline-item" data-filter=".brand">Web Apps</li>
-                    <li class="list-inline-item" data-filter=".design">Design</li>
-                    <li class="list-inline-item" data-filter=".photos">WordPress</li>
-                  </ul>
-                </div>
-              </div>
-
-              <!-- Thumbnail list-->
-              <div class="portfolio-grid row">
-
-                <!-- Single item-->
-                <div class="single-item col-6 col-lg-4 design"><a class="portfolio-item" href="img/GN.png"
-                    data-lightbox>
-                    <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="img/GN.png">
-                      <div class="item-content">
-                        <h6 class="content-title">Gnosis System</h6><span class="content-more">More Info</span>
-                      </div>
-                    </div>
-                  </a></div>
-
-                <!-- FP-->
-                <div class="single-item col-6 col-lg-4 brand"><a class="portfolio-item" href="img/FP_1.png"
-                    data-lightbox>
-                    <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="img/FP_1.png">
-                      <div class="item-content">
-                        <h6 class="content-title">FoodPedidos</h6><span class="content-more">More Info</span>
-                      </div>
-                    </div>
-                  </a></div>
-
-                <!-- SALT -->
-                <div class="single-item col-6 col-lg-4 brand"><a class="portfolio-item" href="img/SALT_1.png"
-                    data-lightbox>
-                    <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="img/SALT_1.png">
-                      <div class="item-content">
-                        <h6 class="content-title">SALT System</h6><span class="content-more">More Info</span>
-                      </div>
-                    </div>
-                  </a></div>
-
-                <!-- POS -->
-                <div class="single-item col-6 col-lg-4 brand"><a class="portfolio-item" href="img/FR_1.png"
-                    data-lightbox>
-                    <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="img/FR_1.png">
-                      <div class="item-content">
-                        <h6 class="content-title">POS System</h6><span class="content-more">More Info</span>
-                      </div>
-                    </div>
-                  </a></div>
-
-                <!-- Single item-->
-                <div class="single-item col-6 col-lg-4 photos"><a class="portfolio-item" href="img/NQ_1.png"
-                    data-lightbox>
-                    <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="img/NQ_1.png">
-                      <div class="item-content">
-                        <h6 class="content-title">NQ Radio</h6><span class="content-more">More Info</span>
-                      </div>
-                    </div>
-                  </a></div>
-              </div>
-
-            </div>
-
-          </div>
-
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <h2 data-i18n="contact.title">Let's build something</h2>
+        <p class="sub" style="margin:0 auto 0" data-i18n="contact.sub">Have an idea for an app or a community that needs one? Write to me.</p>
+        <div class="actions">
+          <a class="btn primary" href="mailto:migueel.angelom@gmail.com">migueel.angelom@gmail.com</a>
+          <a class="btn" href="https://www.linkedin.com/in/miguel-montiel30" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/miguelmontiel30" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
+    </section>
+  </main>
 
-    </div>
+  <footer>
+    <div class="wrap" data-i18n="footer">Miguel Montiel · Tulancingo, Hidalgo, Mexico</div>
+  </footer>
 
-  </div>
+  <script>
+    const ES = {
+      "nav.work": "Proyectos", "nav.experience": "Experiencia", "nav.contact": "Contacto",
+      "hero.eyebrow": "Software Engineer III · Walmart Global Tech",
+      "hero.title": "Construyo apps móviles y web, de principio a fin.",
+      "hero.lead": "Desde la base de datos y sus reglas de seguridad hasta la app en manos de la gente. React Native, Expo, Next.js y Supabase, publicadas en web, iOS y Android desde un solo código, más el framework y las herramientas de IA que hacen eso rápido y repetible.",
+      "hero.cta1": "Ver proyectos", "hero.cta2": "Probar una demo",
+      "stats.years.unit": "años", "stats.years": "en Walmart Global Tech", "stats.platforms": "plataformas con un solo código",
+      "stats.packages": "paquetes en mi propio framework", "stats.products": "productos creados desde 2025",
+      "work.title": "Proyectos destacados",
+      "work.sub": "Productos que diseñé, construí y opero yo mismo, desde la primera migración hasta la publicación automática.",
+      "rp.kicker": "Producto · En producción",
+      "rp.desc": "Una app para administrar fraccionamientos en México: cuotas con comprobante, gastos transparentes, pases de visita con QR, caseta con guías paso a paso, comunicados, encuestas, chats y notificaciones. Hoy la usa un fraccionamiento real en Tulancingo, Hidalgo.",
+      "rp.p1": "Web/PWA, iOS y Android desde un solo código en Expo, con actualizaciones OTA y publicación automática.",
+      "rp.p2": "Supabase multi-organización con seguridad por fila según el rol: vecinos, comité, vigilantes y administración.",
+      "rp.p3": "Panel de administración y sitio público en Next.js sobre la misma base de datos.",
+      "rp.demo": "Probar la demo →", "rp.site": "Sitio web →",
+      "rp.alt1": "Residencial Pro, inicio del vecino: pase de visita, pedir un servicio y abrir puerta",
+      "rp.alt2": "Residencial Pro, inicio del comité: avance del registro de vecinos y pendientes por revisar",
+      "rp.alt3": "Sitio público de Residencial Pro",
+      "fd.kicker": "Framework · Privado",
+      "fd.desc": "Mi framework para crear apps con Expo + Supabase. Todas comparten las mismas reglas, componentes, tema y forma de llevar el seguimiento, y un cambio en un paquete llega a todas al subir una versión.",
+      "fd.p1": "Reglas y un plugin de Claude Code para que los agentes de IA sigan la misma arquitectura y hagan commits, pruebas y verificaciones igual.",
+      "fd.p2": "Una capa de datos desacoplada del backend: las pantallas nunca tocan Supabase directamente.",
+      "fd.p3": "Un Hub que registra cada sesión, pendiente y decisión de todos los proyectos.",
+      "fd.cli": "Diagnóstico, migraciones, publicación y bitácora del Hub",
+      "fd.ui": "Componentes y temas a partir de un solo archivo de marca",
+      "fd.data": "Contratos, adaptadores y errores tipados",
+      "fd.core": "Fechas, errores y una sola API para web y nativo",
+      "fd.rules": "10 skills para agentes de IA: inicio, commit, PR, verificación…",
+      "fd.hub": "Apps nuevas con un comando y seguimiento de todas",
+      "more.title": "Más proyectos", "more.sub": "La mayoría son repositorios privados; los enlaces llevan a demos públicas.",
+      "wa.desc": "Finanzas personales: gastos, presupuesto, cuentas, deudas, suscripciones y vehículos. La IA clasifica gastos, lee tickets y odómetros y evalúa compras a meses.",
+      "rv.desc": "Vacía tu mente en ideas: captura rápida estilo GTD, clasificación del inbox con IA, proyectos con tareas anidadas y un Pomodoro para accionarlas.",
+      "rt.desc": "Torneos de fútbol amateur: canchas con rejilla de disponibilidad semanal, configuración de partidos, arbitraje en vivo con cronómetro y descansos, y roles para organizadores.",
+      "to.desc": "Una app de viajes creada con la plantilla de Foundra: web, iOS y Android con login, perfiles y la librería de componentes desde el primer día.",
+      "es.desc": "Gestión escolar para alumnos, maestros, directivos y padres: lo académico, financiero y organizativo en un solo lugar.",
+      "early.kicker": "Trabajo anterior · 2018–2021",
+      "early.desc": "Administración de flotilla y logística para una empresa de transporte, y un sistema de pedidos de comida con app web y móvil.",
+      "link.live": "En vivo →", "link.code": "Código →", "link.repos": "Repositorios →",
+      "exp.title": "Experiencia", "exp.sub": "Ocho años creando software, cinco de ellos en Walmart Global Tech.",
+      "exp.wm.meta": "México · Híbrido · dic 2021 – hoy",
+      "exp.wm.3": "· abr 2026 – hoy", "exp.wm.2": "· dic 2023 – abr 2026", "exp.wm.1": "· dic 2021 – nov 2023",
+      "exp.xi.role": "Desarrollador full-stack · Xiimbal", "exp.xi.meta": "Tulancingo, Hidalgo · ene 2019 – dic 2021",
+      "exp.pr.role": "Desarrollador jefe de páginas web (prácticas) · PROEMIER",
+      "exp.pr.meta": "Tulancingo, Hidalgo · may – ago 2018 · Aplicaciones web para gestión logística",
+      "edu.title": "Educación", "edu.degree": "Ingeniería en Tecnologías de la Información y la Comunicación",
+      "edu.school": "Universidad Tecnológica de Tulancingo · 2016 – 2020",
+      "skills.title": "Tecnologías", "skills.mobile": "Móvil y web", "skills.backend": "Backend y datos",
+      "skills.state": "Estado y calidad", "skills.ship": "Publicación", "skills.ai": "IA", "skills.agents": "Reglas y skills para agentes",
+      "contact.title": "Construyamos algo",
+      "contact.sub": "¿Tienes la idea de una app o una comunidad que la necesita? Escríbeme.",
+      "footer": "Miguel Montiel · Tulancingo, Hidalgo, México",
+    };
+    const EN = {};
+    document.querySelectorAll("[data-i18n]").forEach((el) => { EN[el.dataset.i18n] = el.textContent; });
+    document.querySelectorAll("[data-i18n-alt]").forEach((el) => { EN[el.dataset.i18nAlt] = el.alt; });
 
-  <!-- Contact lightbox-->
-  <div class="lightbox-wrapper" id="contact" data-simplebar>
+    function store(key, value) {
+      try { localStorage.setItem(key, value); } catch (e) { /* private mode: the choice just isn't remembered */ }
+    }
+    function read(key) {
+      try { return localStorage.getItem(key); } catch (e) { return null; }
+    }
 
-    <div class="container">
+    function setLang(lang) {
+      const dict = lang === "es" ? ES : EN;
+      document.documentElement.lang = lang;
+      document.querySelectorAll("[data-i18n]").forEach((el) => { const t = dict[el.dataset.i18n]; if (t) el.textContent = t; });
+      document.querySelectorAll("[data-i18n-alt]").forEach((el) => { const t = dict[el.dataset.i18nAlt]; if (t) el.alt = t; });
+      const btn = document.getElementById("lang");
+      btn.textContent = lang === "es" ? "EN" : "ES";
+      btn.setAttribute("aria-label", lang === "es" ? "View in English" : "Ver en español");
+      document.title = lang === "es" ? "Miguel Montiel · Ingeniero de software" : "Miguel Montiel · Software Engineer";
+      const url = new URL(window.location.href);
+      if (lang === "es") url.searchParams.set("lang", "es"); else url.searchParams.delete("lang");
+      history.replaceState(null, "", url);
+      store("lang", lang);
+    }
 
-      <div class="lightbox-close">
-        <div class="close-btn" data-modal-close=""><span class="btn-line"></span></div>
-      </div>
+    const param = new URLSearchParams(window.location.search).get("lang");
+    setLang(param === "es" || param === "en" ? param : (read("lang") === "es" ? "es" : "en"));
+    document.getElementById("lang").addEventListener("click", () => setLang(document.documentElement.lang === "es" ? "en" : "es"));
 
-      <div class="row">
-
-        <div class="col-12">
-
-          <div class="lightbox-content">
-
-            <div class="row">
-              <div class="col-12">
-                <div class="section-heading page-heading">
-                  <p class="section-description">Feel free to contact me anytime</p>
-                  <h2 class="section-title">Get in Touch</h2>
-                  <div class="animated-bar"></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Contact section-->
-            <div class="contact-section single-section">
-
-              <div class="row">
-
-                <!-- Contact form-->
-                <div class="col-12 col-lg-7">
-                  <form class="contact-form" id="contact-form" action="php/contact.php">
-                    <h4 class="content-title">Message Me</h4>
-
-                    <div class="row">
-
-                      <div class="col-12 col-md-6 form-group"><input class="form-control" id="contact-name" type="text"
-                          name="name" placeholder="Name" required="">
-                      </div>
-
-                      <div class="col-12 col-md-6 form-group"><input class="form-control" id="contact-email"
-                          type="email" name="email" placeholder="Email" required="">
-                      </div>
-
-                      <div class="col-12 form-group"><input class="form-control" id="contact-subject" type="text"
-                          name="subject" placeholder="Subject" required="">
-                      </div>
-
-                      <div class="col-12 form-group form-message"><textarea class="form-control" id="contact-message"
-                          name="message" placeholder="Message" rows="5" required=""></textarea>
-                      </div>
-
-                      <div class="col-12 form-submit"><button class="btn button-main button-scheme" id="contact-submit"
-                          type="submit">Send Message</button>
-                        <p class="contact-feedback"></p>
-                      </div>
-
-                    </div>
-
-                  </form>
-                </div>
-
-                <!-- Contact info-->
-                <div class="col-12 col-lg-5">
-
-                  <div class="contact-info">
-
-                    <h4 class="content-title">Contact Info</h4>
-
-                    <p class="info-description">
-                      Always available for freelance work if the right project comes along, Feel free to contact me!
-                    </p>
-
-                    <ul class="list-unstyled list-info">
-
-                      <li>
-                        <div class="media align-items-center"><span class="info-icon"><i
-                              class="icon ion-logo-ionic"></i></span>
-                          <div class="media-body info-details">
-                            <h6 class="info-type">Name</h6><span class="info-value">Miguel Angel Montiel</span>
-                          </div>
-                        </div>
-                      </li>
-
-                      <li>
-                        <div class="media align-items-center"><span class="info-icon"><i
-                              class="icon ion-md-map"></i></span>
-                          <div class="media-body info-details">
-                            <h6 class="info-type">Location</h6>
-                            <span class="info-value">
-                              43612 Hidalgo, México.
-                            </span>
-                          </div>
-                        </div>
-                      </li>
-
-                      <li>
-                        <div class="media align-items-center"><span class="info-icon"><i
-                              class="icon ion-md-call"></i></span>
-                          <div class="media-body info-details">
-                            <h6 class="info-type">Call Me</h6>
-                            <span class="info-value">
-                              <a href="tel:7751430928">(+52) 775-143-09-28</a>
-                            </span>
-                          </div>
-                        </div>
-                      </li>
-
-                      <li>
-                        <div class="media align-items-center"><span class="info-icon"><i
-                              class="icon ion-md-send"></i></span>
-                          <div class="media-body info-details">
-                            <h6 class="info-type">Email Me</h6><span class="info-value">
-                              <a href="mailto:migueel.angelom@gmail.com">migueel.angelom@gmail.com</a></span>
-                          </div>
-                        </div>
-                      </li>
-
-                    </ul>
-
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- Scripts-->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/imagesloaded.pkgd.min.js"></script>
-  <script src="js/isotope.pkgd.min.js"></script>
-  <script src="js/animatedModal.js"></script>
-  <script src="js/tiny-slider.js"></script>
-  <script src="js/lity.min.js"></script>
-  <script src="js/simplebar.min.js"></script>
-  <script src="js/jquery.mb.YTPlayer.min.js"></script>
-  <script src="js/main.js"></script>
-  <!-- Custom JS (Add your custom JS scripts to this file)-->
-  <script src="js/custom.js"></script>
+    const savedTheme = read("theme");
+    if (savedTheme === "dark" || savedTheme === "light") document.documentElement.dataset.theme = savedTheme;
+    document.getElementById("theme").addEventListener("click", () => {
+      const current = document.documentElement.dataset.theme
+        || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = next;
+      store("theme", next);
+    });
+  </script>
 </body>
-
 </html>
