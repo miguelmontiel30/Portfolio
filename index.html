@@ -133,6 +133,7 @@
       <div class="actions">
         <a class="btn primary" href="#work" data-i18n="hero.cta1">See my work</a>
         <a class="btn" href="https://residencial-pro.expo.app/demo" target="_blank" rel="noopener" data-i18n="hero.cta2">Try a live demo</a>
+        <a class="btn" href="cv/Miguel-Montiel-CV-EN.pdf" download data-cv data-i18n="cv">Download CV</a>
       </div>
       <div class="stats">
         <div class="stat"><b>5 <span data-i18n="stats.years.unit">years</span></b><span data-i18n="stats.years">at Walmart Global Tech</span></div>
@@ -288,6 +289,7 @@
           <a class="btn primary" href="mailto:migueel.angelom@gmail.com">migueel.angelom@gmail.com</a>
           <a class="btn" href="https://www.linkedin.com/in/miguel-montiel30" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn" href="https://github.com/miguelmontiel30" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="cv/Miguel-Montiel-CV-EN.pdf" download data-cv data-i18n="cv">Download CV</a>
         </div>
       </div>
     </section>
@@ -350,6 +352,7 @@
       "contact.title": "Construyamos algo",
       "contact.sub": "¿Tienes la idea de una app o una comunidad que la necesita? Escríbeme.",
       "footer": "Miguel Montiel · Tulancingo, Hidalgo, México",
+      "cv": "Descargar CV",
     };
     const EN = {};
     document.querySelectorAll("[data-i18n]").forEach((el) => { EN[el.dataset.i18n] = el.textContent; });
@@ -367,6 +370,9 @@
       document.documentElement.lang = lang;
       document.querySelectorAll("[data-i18n]").forEach((el) => { const t = dict[el.dataset.i18n]; if (t) el.textContent = t; });
       document.querySelectorAll("[data-i18n-alt]").forEach((el) => { const t = dict[el.dataset.i18nAlt]; if (t) el.alt = t; });
+      document.querySelectorAll("[data-cv]").forEach((el) => {
+        el.href = lang === "es" ? "cv/Miguel-Montiel-CV-ES.pdf" : "cv/Miguel-Montiel-CV-EN.pdf";
+      });
       const btn = document.getElementById("lang");
       btn.textContent = lang === "es" ? "EN" : "ES";
       btn.setAttribute("aria-label", lang === "es" ? "View in English" : "Ver en español");
